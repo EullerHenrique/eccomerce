@@ -16,6 +16,7 @@ public class NewOrderMain {
         producer.send(record, (data, ex) -> {
             if(ex!= null){
                 ex.printStackTrace();
+                return;
             }
             System.out.println("SUCESSO...ENVIANDO -> " + " topic: " + data.topic() + " ::: " + "partition: " + data.partition() + " - " + "offset: " + data.offset() + " - " + "timestamp: " + data.timestamp());
         }).get();
