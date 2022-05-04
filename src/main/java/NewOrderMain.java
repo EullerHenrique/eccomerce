@@ -1,3 +1,4 @@
+import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -10,16 +11,23 @@ public class NewOrderMain {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         var producer = new KafkaProducer<String, String>(properties());
-        var key = "121212";
-        var value = "121212";
-        var record = new ProducerRecord<>("ECOMMERCE_NEW_ORDER", key, value);
-        producer.send(record, (data, ex) -> {
-            if(ex!= null){
+
+
+        Callback callback = (data, ex) -> {
+            if (ex != null) {
                 ex.printStackTrace();
                 return;
             }
             System.out.println("SUCESSO...ENVIANDO -> " + " topic: " + data.topic() + " ::: " + "partition: " + data.partition() + " - " + "offset: " + data.offset() + " - " + "timestamp: " + data.timestamp());
-        }).get();
+        };
+
+        var order = "PS5";
+        var orderRecord = new ProducerRecord<>("ECOMMERCE_NEW_ORDER", order, order);
+        producer.send(orderRecord, callback).get();
+
+        var email = "eullerhenrique@ufu.br";
+        var emailRecord =  new ProducerRecord<>("ECOMMERCE_SEND_EMAIL", email, email);
+        producer.send(emailRecord, callback).get();
     }
 
     private static Properties properties() {
