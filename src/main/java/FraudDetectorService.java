@@ -22,7 +22,7 @@ public class FraudDetectorService {
                     System.out.println(record.partition());
                     System.out.println(record.offset());
                     try {
-                        Thread.sleep(1000);
+                        Thread.sleep(5000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -41,6 +41,13 @@ public class FraudDetectorService {
         properties.setProperty(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         properties.setProperty(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         properties.setProperty(ConsumerConfig.GROUP_ID_CONFIG, FraudDetectorService.class.getSimpleName());
+
+        //Faz com que o pool consuma somente um record por loop, com isso, o rebalancing
+        //(rebalancing -> Distribui novamente os records pelas partições)
+        //não impede que os commits (commit-> Notifica que a mensagem foi consumida) sejam feitos corretamente, pois
+        //agora se o rebalancing for feito, não háverá records que não foram consumidos na partição incorreta
+        properties.setProperty(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, "1");
+
         return properties;
 
     }
