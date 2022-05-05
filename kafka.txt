@@ -1,0 +1,8 @@
+kafka-topics --create --bootstrap-server localhost:29092 --replication-factor 1 --partitions 1 --topic ECOMMERCE_NEW_ORDER
+kafka-topics --list --bootstrap-server localhost:29092
+kafka-console-producer --broker-list localhost:29092 --topic ECOMMERCE_NEW_ORDER
+kafka-console-consumer --bootstrap-server localhost:29092 --topic ECOMMERCE_NEW_ORDER --from-beginning
+kafka-topics --alter --bootstrap-server localhost:29092 --topic ECOMMERCE_NEW_ORDER --partitions 3
+kafka-topics --bootstrap-server localhost:29092 --describe
+kafka-consumer --bootstrap-server localhost:29092 --describe
+kafka-consumer-groups --all-groups --bootstrap-server localhost:29092 --describe
