@@ -6,7 +6,6 @@ import org.apache.kafka.common.serialization.StringSerializer;
 
 import java.io.Closeable;
 import java.util.Properties;
-import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 public class KafkaDispatcher<T> implements Closeable {

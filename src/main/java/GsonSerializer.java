@@ -10,4 +10,5 @@ public class GsonSerializer<T> implements Serializer<T> {
     public byte[] serialize(String s, T object) {
         return gson.toJson(object).getBytes();
     }
+
 }

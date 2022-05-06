@@ -21,7 +21,8 @@ public class NewOrderMain {
 
                     orderDispatcher.send("ECOMMERCE_NEW_ORDER", userID, order);
 
-                    var email = "eullerhenrique@ufu.br";
+                    //var email = new Email("Olá", "eullerhenrique@ufu.br");
+                    var email = "eullerhenrique@outlook.com";
                     emailDispatcher.send("ECOMMERCE_SEND_EMAIL", userID, email);
 
                 }
