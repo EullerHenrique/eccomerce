@@ -1,6 +1,6 @@
 0
 55
-__consumer_offsets 29 418
+__consumer_offsets 29 433
 __consumer_offsets 43 0
 __consumer_offsets 0 0
 __consumer_offsets 6 0
@@ -9,18 +9,18 @@ __consumer_offsets 30 0
 __consumer_offsets 13 0
 __consumer_offsets 26 0
 __consumer_offsets 21 0
-__consumer_offsets 19 1250
+__consumer_offsets 19 4893
 __consumer_offsets 25 0
 __consumer_offsets 33 0
 __consumer_offsets 41 0
 __consumer_offsets 37 0
 __consumer_offsets 8 0
 __consumer_offsets 24 0
-__consumer_offsets 49 1537
+__consumer_offsets 49 1748
 __consumer_offsets 3 0
 __consumer_offsets 40 0
 __consumer_offsets 27 0
-ECOMMERCE_NEW_ORDER 1 8
+ECOMMERCE_NEW_ORDER 1 18
 __consumer_offsets 17 0
 __consumer_offsets 32 0
 __consumer_offsets 39 0
@@ -32,7 +32,7 @@ __consumer_offsets 45 0
 __consumer_offsets 16 0
 __consumer_offsets 10 0
 __consumer_offsets 11 0
-ECOMMERCE_NEW_ORDER 0 6
+ECOMMERCE_NEW_ORDER 0 21
 __consumer_offsets 20 0
 __consumer_offsets 47 0
 __consumer_offsets 18 0
@@ -47,9 +47,9 @@ __consumer_offsets 4 0
 __consumer_offsets 31 0
 __consumer_offsets 5 0
 topic 0 40
-ECOMMERCE_NEW_ORDER 2 6
+ECOMMERCE_NEW_ORDER 2 21
 __consumer_offsets 1 0
-ECOMMERCE_SEND_EMAIL 0 20
+ECOMMERCE_SEND_EMAIL 0 60
 __consumer_offsets 38 0
 __consumer_offsets 34 0
 __consumer_offsets 9 0
