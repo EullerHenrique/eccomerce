@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
@@ -8,22 +9,26 @@ public class NewOrderMain {
 
         //Se uma exception for lançada ao criar o KafkaDispatcher, KafkaDispatcher.close é chamada
         //Se uma execption não for lanáda ao criar o KafkaDispatcher, KafkaDispatcher.close é chamada após kafkaService.run ser chamada
-        try (var dispatcher = new KafkaDispatcher()){
+        try (var orderDispatcher = new KafkaDispatcher<Order>()) {
+            try (var emailDispatcher = new KafkaDispatcher<String>()) {
+                for (var i = 0; i < 10; i++) {
 
-            for (var i = 0; i < 10; i++) {
+                    var userID = UUID.randomUUID().toString();
+                    var orderId = UUID.randomUUID().toString();
+                    var value = BigDecimal.valueOf(Math.random() * 5000 + 1);
 
-                var key = UUID.randomUUID().toString();
-                var value = key + "PS5";
-                dispatcher.send("ECOMMERCE_NEW_ORDER", key, value);
+                    var order = new Order(userID, orderId, value);
 
-                var email = "eullerhenrique@ufu.br";
-                dispatcher.send("ECOMMERCE_SEND_EMAIL", key, email);
+                    orderDispatcher.send("ECOMMERCE_NEW_ORDER", userID, order);
+
+                    var email = "eullerhenrique@ufu.br";
+                    emailDispatcher.send("ECOMMERCE_SEND_EMAIL", userID, email);
+
+                }
 
             }
 
         }
-
     }
-
-
 }
+
