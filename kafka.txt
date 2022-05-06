@@ -6,3 +6,5 @@ kafka-topics --alter --bootstrap-server localhost:29092 --topic ECOMMERCE_NEW_OR
 kafka-topics --bootstrap-server localhost:29092 --describe
 kafka-consumer --bootstrap-server localhost:29092 --describe
 kafka-consumer-groups --all-groups --bootstrap-server localhost:29092 --describe
+kafka-topics --create --bootstrap-server localhost:29092 --replication-factor 1 --partitions 1 --topic ECOMMERCE_SEND_EMAIL
+kafka-topics --create --bootstrap-server localhost:29092 --replication-factor 1 --partitions 3 --topic ECOMMERCE_NEW_ORDER
